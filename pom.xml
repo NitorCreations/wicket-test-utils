@@ -4,7 +4,7 @@
 
   <groupId>com.nitorcreations.testing</groupId>
   <artifactId>wicket-test-utils</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
 
   <name>Test utilities for Wicket 6 / Mockito projects</name>
   <packaging>jar</packaging>
