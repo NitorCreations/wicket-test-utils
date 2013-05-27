@@ -7,8 +7,12 @@ import org.junit.Test;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.mock.MockApplication;
+import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.resource.loader.IStringResourceLoader;
 import org.apache.wicket.util.tester.WicketTester;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -46,4 +50,19 @@ public class MockStringResourceLoaderTest {
         assertThat(loader.loadStringResource(new Label("id"), "foo", null, null, null), is("It's correct!"));
         assertThat(loader.loadStringResource(TextField.class, "foo", null, null, null), is("foo"));
     }
+
+    @Test
+    public void bindClearsOtherResourceLoaders() {
+        WebApplication app = new MockApplication() {
+            @Override
+            protected void init() {
+                super.init();
+                loader.bind(this);
+            }
+        };
+        wicketTester = new WicketTester(app);
+        assertThat(app.getResourceSettings().getStringResourceLoaders(),
+                contains((IStringResourceLoader) loader));
+    }
+
 }

@@ -2,6 +2,7 @@ package com.nitorcreations.test.wicket.resources;
 
 import java.util.Locale;
 
+import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.resource.loader.IStringResourceLoader;
 
@@ -28,6 +29,16 @@ public final class MockStringResourceLoader implements IStringResourceLoader {
                 .then(returnsArgAt(1));
         when(mockLoader.loadStringResource(any(Component.class), anyString(), any(Locale.class), anyString(),
                 anyString())).then(returnsArgAt(1));
+    }
+
+    /**
+     * Binds the resource loader to the application by removing all other resource loaders
+     * and adding itself to the resource loader collection
+     * @param application the application to bind to
+     */
+    public void bind(Application application) {
+        application.getResourceSettings().getStringResourceLoaders().clear();
+        application.getResourceSettings().getStringResourceLoaders().add(this);
     }
 
     @Override

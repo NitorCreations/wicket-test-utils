@@ -106,6 +106,15 @@
       <version>${mockito.version}</version>
       <optional>true</optional>
     </dependency>
+
+
+      <!-- LOGGING IN TESTS -->
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-nop</artifactId>
+          <version>1.7.1</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
   <build>
