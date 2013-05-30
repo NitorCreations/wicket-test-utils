@@ -1,5 +1,19 @@
-## Wicket-test-utils
+# Wicket-test-utils
 The package contains test utilities aimed at Wicket projects.
+
+## Maven
+
+Available in Maven central repository. Add this to your `pom.xml`
+
+```xml
+<dependency>
+  <groupId>com.nitorcreations</groupId>
+  <artifactId>wicket-test-utils</artifactId>
+  <version>1.1</version>
+</dependency>
+```
+
+## Contents
 
 ### `Selection`
 
